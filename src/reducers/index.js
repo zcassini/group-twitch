@@ -1,8 +1,11 @@
-import people from './people-reducer.js';
-import {combineReducers} from 'redux';
+import people from './people-reducer.js'
+import streamersList from './streamersList-reducer.js'
+import {combineReducers} from 'redux'
 
 const rootReducer = combineReducers({
-  people
-});
+  people,
+  
+  
+})
 
-export default rootReducer;
+export default rootReducer

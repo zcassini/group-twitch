@@ -10,7 +10,7 @@ class PeopleContainer extends Component {
     super(props);
 
     this.state = {
-      people: []
+      streamers: []
     };
   }
 

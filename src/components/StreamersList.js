@@ -1,10 +1,11 @@
 import React, {PropTypes} from 'react'
-import Streamers from './Streamers'
+import Streamer from './Streamer'
 
-// const Header = ({Header}) => {
-const StreamersList = props => {
-  const names = ["zac", "mr. quisenberry", "tyler.perry"]
-  const streamersList = names.map(x => <Streamers name={x} />)
+const StreamersList = ({streamers}) => {
+  // const names = ["zac", "mr. quisenberry", "tyler.perry"]
+  console.log(streamers)
+  console.log(streamers[2].name)
+  const streamersList = streamers.map(streamer => <Streamer key={streamer.name} streamer={streamer} />)
   return (
     <div>
      {streamersList}
@@ -12,5 +13,8 @@ const StreamersList = props => {
   )
 }
 
+StreamersList.propTypes = {
+  streamers: PropTypes.array.isRequired
+}
 
-export default StreamersList;
+export default StreamersList

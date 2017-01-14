@@ -1,11 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import './index.css';
-import {Provider} from 'react-redux';
-import configureStore from './store/configure-store';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import App from './App'
+import './index.css'
+import {Provider} from 'react-redux'
+import configureStore from './store/configure-store'
 
-const store = configureStore();
+const is = {streamers: [{ name: "zac" },
+                        { name: "jesus" },
+                        { name: "dr. steven brule" }]}
+const store = configureStore(is)
 
 ReactDOM.render(
   <Provider store={store}>

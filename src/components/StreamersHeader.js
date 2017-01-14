@@ -1,7 +1,9 @@
-import React, {PropTypes} from 'react'
+// import React, {PropTypes} from 'react'
+
+import React from 'react'
 
 // const Header = ({Header}) => {
-const Header = props => {
+const StreamersHeader = props => {
   return (
     <div>
       <h1>Twitch Streamers</h1>
@@ -13,4 +15,4 @@ const Header = props => {
 //   Header: PropTypes.object.isRequired
 // }
 
-export default Header;
+export default StreamersHeader

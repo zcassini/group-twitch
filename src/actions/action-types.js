@@ -1,1 +1,5 @@
 export const ADD_PERSON = 'ADD_PERSON';
+
+export const LOAD_DATA_SUCCESS = 'LOAD_DATA_SUCCESS'
+export const LOAD_DATA_FAILURE = 'LOAD_DATA_FAILURE'
+

@@ -1,12 +1,16 @@
 // import React, {PropTypes} from 'react'
-
 import React from 'react'
 
-// const Header = ({Header}) => {
-const StreamersHeader = props => {
+const divStyle = {backgroundColor: "grey",
+                  // marginBottom: 0
+                  // height: 50
+}
+const headerStyle = {margin: 0, height: 50}
+
+const StreamersHeader = () => {
   return (
-    <div>
-      <h1>Twitch Streamers</h1>
+    <div style={divStyle}>
+      <h1 style={headerStyle}>Twitch Streamers</h1>
     </div>
   )
 }

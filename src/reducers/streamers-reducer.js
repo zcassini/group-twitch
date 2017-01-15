@@ -1,21 +1,22 @@
 import * as types from '../actions/action-types'
 
-export default (state = [], action, id) => {
-  console.log("here is the id from the reducer ->", id)
+export default (state = [], action) => {
+  const data = action.idAndData
+  // console.log(data)
   switch (action.type) {
     case types.LOAD_CHANNELS_SUCCESS:
-        console.log('channels loads -- great success')
-        console.log(action.data)
-        return parseChannel(action.data)
+      return state.map(e => e.id === data.uid ? {...e, channel: data} : e)
+        // console.log('channels loads -- great success')
+        // console.log(action.data)
+        // return parseChannel(state, data)
     case types.LOAD_CHANNELS_FAILURE:
-        console.log('channels loads -- FAIL')
         return state
     case types.LOAD_STREAMS_SUCCESS:
-        console.log('streams loads -- great success')
-        console.log(action.data)
-        return parseStream(action.data)        
+      return state.map(e => e.id === data.uid ? {...e, stream: data} : e)
+        // console.log('streams loads -- great success')
+        // console.log(data)
+        // return parseStream(state, data)        
     case types.LOAD_STREAMS_FAILURE:
-        console.log('streams loads -- FAIL')
         return state    
     default:
       return state
@@ -24,7 +25,7 @@ export default (state = [], action, id) => {
 
 // return [...state, Object.assign({}, action.data)]
 
-const parseStream = (state, data) => {
+// const parseStream = (state, data) => {
   // switch (data.stream) {
   //   case null:
   //     return // game = "Offline" status = "Offline"
@@ -33,18 +34,22 @@ const parseStream = (state, data) => {
   //   default:
   //     return //game = action.data.stream.game status = "Online"
   // }
-  return state
-}
+  // return state.map(e => e.id === data.uid ? {...e, stream: data} : e)
+// }
 
-const parseChannel = (state, data) => {
+// const parseChannel = (state, data) => {
   //need to get status from state
-  const logo = data.logo || "https://placeimg.com/50/50/tech"
+  // const logo = data.logo || "https://placeimg.com/50/50/tech"
   //need to pass in the channel name maybe
-  const name = data.display_name || "channel" 
-  const description = 'online' === 'online' ?  ': ' + data.status : ""
-  const url = data.url
-  return state
-}
+  // const name = data.display_name
+  // const description = 'online' === 'online' ?  ': ' + data.status : ""
+  // const url = data.url
+  // return state.map(e => e.id === data.uid ? {...e, channel: data} : e)
+  // const bidi = {...theone, channel: data}
+  // console.log(bidi)
+  
+  // return state
+// }
   
   
 // $.getJSON(makeURL("channels", channel), function(data) {

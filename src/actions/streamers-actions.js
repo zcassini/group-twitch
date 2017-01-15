@@ -8,18 +8,14 @@ const myInit = { method:  'GET',
                  mode:    'cors',
                  cache:   'default' }
 
-
-
 export const loadChannels = (id) => {
   // console.log('oh hai laod channels')
   const getChannel = new Request(`https://api.twitch.tv/kraken/channels/${id}?client_id=${clientKey}`, myInit)
   return dispatch => fetch(getChannel)
     .then(res => res.json())
     .then(
-      data => console.log('lc dataz:', data),
       data => {
         const idAndData = {...data, uid: id}
-        console.log('id data', idAndData)
         dispatch({ type: types.LOAD_CHANNELS_SUCCESS, idAndData})
         },
       err => dispatch({ type: types.LOAD_CHANNELS_FAILURE, err })
@@ -27,13 +23,14 @@ export const loadChannels = (id) => {
 }
 
 export const loadStreams = (id) => {
-  // console.log('oh hai laod streams')
   const getStream  = new Request(`https://api.twitch.tv/kraken/streams/${id}?client_id=${clientKey}`, myInit)
   return dispatch => fetch(getStream)
     .then(res => res.json())
     .then(
-      data => console.log('ls dataz', data),
-      data => dispatch({ type: types.LOAD_STREAMS_SUCCESS, data}),
+      data => {
+        const idAndData = {...data, uid: id}
+        dispatch({ type: types.LOAD_STREAMS_SUCCESS, idAndData})
+      },
       err =>  dispatch({ type: types.LOAD_STREAMS_FAILURE, err })
     )
 }

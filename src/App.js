@@ -3,8 +3,6 @@ import React, { Component } from 'react'
 import './App.css'
 import StreamersContainer from './components/StreamersContainer'
 
-
-
 class App extends Component {
   constructor (props) {
     super(props)
@@ -12,7 +10,6 @@ class App extends Component {
   }
 
   render() {
-    // console.log(store.getState())
     return (
       <div className="App">
         {/*

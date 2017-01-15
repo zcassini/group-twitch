@@ -7,11 +7,8 @@ class StreamersList extends Component {
   //   // this.onAddPersonClick = this.onAddPersonClick.bind(this);
   // }
   componentWillMount() {
-    // console.log('comp will mount')
-    // console.log(this.props)
-    // this.props.dispatch(loadData(key)) // don't forget to pass dispatch huh??? i never call dispatch
+   // this.props.dispatch(loadData(key)) // don't forget to pass dispatch huh??? i never call dispatch
     this.props.streamers.forEach(x => {
-      console.log('heres a guy named id:') //, x.id, "lets fetch her shit")
       this.props.loadChannels(x.id) // don't forget to pass dispatch
       this.props.loadStreams(x.id) // don't forget to pass dispatch
     })
@@ -19,8 +16,8 @@ class StreamersList extends Component {
   
   }
   render () {
-    const streamersList = this.props.streamers.map(streamer => <Streamer key={streamer.id} streamer={streamer} />)
-    
+    const streamersList = this.props.streamers.map(streamer =>
+      <Streamer key={streamer.id} streamer={streamer} channel={streamer.channel} stream={streamer.stream} />)
     return (
       <div>
        {streamersList}

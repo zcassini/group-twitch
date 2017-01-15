@@ -6,20 +6,19 @@ import StreamersHeader from './StreamersHeader'
 import StreamersList from './StreamersList'
 
 class StreamersContainer extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      streamers: []
-    }
-  }
+  // constructor(props) {
+  //   super(props)
+  //   this.state = {
+  //     streamers: []
+  //   }
+  // }
   
   render() {
     const {streamers} = this.props
     const {loadChannels} = this.props.actions
     const {loadStreams} = this.props.actions
-    console.log(this.props)
     return (
-      <div>
+      <div style={{maxWidth: '75%', margin: 'auto'}}>
         <StreamersHeader />
         <StreamersList streamers={streamers}
                        loadChannels={loadChannels}

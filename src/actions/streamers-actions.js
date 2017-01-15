@@ -1,16 +1,73 @@
+/* global fetch Headers Request */
+
 import * as types from './action-types'
 
-const loadData = (clientKey) => {
-  console.log('oh hai')
-  return dispatch => fetch(`https://api.twitch.tv/kraken/users/sing_sing?client_id=${clientKey}`) // Redux Thunk handles these
+const clientKey = '35dehjsoksrymi9wv3csgg31ygbs7x'
+const myInit = { method:  'GET',
+                 headers: new Headers({'Accept': 'application/vnd.twitchtv.v5+json'}),
+                 mode:    'cors',
+                 cache:   'default' }
+
+
+
+export const loadChannels = (id) => {
+  // console.log('oh hai laod channels')
+  const getChannel = new Request(`https://api.twitch.tv/kraken/channels/${id}?client_id=${clientKey}`, myInit)
+  return dispatch => fetch(getChannel)
     .then(res => res.json())
     .then(
-      data => dispatch({ type: types.LOAD_DATA_SUCCESS, data }),
-      err => dispatch({ type: types.LOAD_DATA_FAILURE, err })
+      data => console.log('lc dataz:', data),
+      data => {
+        const idAndData = {...data, uid: id}
+        console.log('id data', idAndData)
+        dispatch({ type: types.LOAD_CHANNELS_SUCCESS, idAndData})
+        },
+      err => dispatch({ type: types.LOAD_CHANNELS_FAILURE, err })
     )
 }
 
-export default loadData
+export const loadStreams = (id) => {
+  // console.log('oh hai laod streams')
+  const getStream  = new Request(`https://api.twitch.tv/kraken/streams/${id}?client_id=${clientKey}`, myInit)
+  return dispatch => fetch(getStream)
+    .then(res => res.json())
+    .then(
+      data => console.log('ls dataz', data),
+      data => dispatch({ type: types.LOAD_STREAMS_SUCCESS, data}),
+      err =>  dispatch({ type: types.LOAD_STREAMS_FAILURE, err })
+    )
+}
+
+
+//https://api.twitch.tv/kraken/channels/44322889/client_id=35dehjsoksrymi9wv3csgg31ygbs7x
+//return dispatch => fetch(`https://api.twitch.tv/kraken/users/sing_sing?client_id=${clientKey}`) // Redux Thunk handles these
+//singsing 21390470
+
+// .getJSON(makeURL("streams", channel), function(data) {
+//       var game,
+//           status;
+//       if (data.stream === null) {
+//         game = "Offline";
+//         status = "offline";
+//       } else if (data.stream === undefined) {
+//         game = "Account Closed";
+//         status = "offline";
+//       } else {
+//         game = data.stream.game;
+//         status = "online";
+//       };
+      
+// export const loadData = () => {
+//   console.log('oh hai')
+//   return dispatch => fetch(`https://api.twitch.tv/kraken/users/sing_sing?client_id=${clientKey}`) // Redux Thunk handles these
+//     .then(res => res.json())
+//     .then(
+//       data => dispatch({ type: types.LOAD_DATA_SUCCESS, data }),
+//       err => dispatch({ type: types.LOAD_DATA_FAILURE, err })
+//     )
+// }
+
+// export default loadData
 
 
 // {

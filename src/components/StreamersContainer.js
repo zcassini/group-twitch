@@ -1,10 +1,7 @@
 import React, {PropTypes, Component} from 'react'
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import loadData from '../actions/streamers-actions'
-const key = '35dehjsoksrymi9wv3csgg31ygbs7x'
-import * as streamersActions from '../actions/streamers-actions';
-
+import * as streamersActions from '../actions/streamers-actions'
 import StreamersHeader from './StreamersHeader'
 import StreamersList from './StreamersList'
 
@@ -16,18 +13,17 @@ class StreamersContainer extends Component {
     }
   }
   
-   componentWillMount() {
-    console.log('comp will mount')
-    loadData(key) // don't forget to pass dispatch
-    // this.dispatch(loadData(key)) // don't forget to pass dispatch
-  }
-  
   render() {
     const {streamers} = this.props
+    const {loadChannels} = this.props.actions
+    const {loadStreams} = this.props.actions
+    console.log(this.props)
     return (
       <div>
         <StreamersHeader />
-        <StreamersList streamers={streamers}/>
+        <StreamersList streamers={streamers}
+                       loadChannels={loadChannels}
+                       loadStreams={loadStreams}/>
       </div>
     )
   }

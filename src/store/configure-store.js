@@ -1,11 +1,17 @@
 import rootReducer from '../reducers'
-// import createLogger from 'redux-logger'
-// import thunkMiddleware from 'redux-thunk'
 import thunk from 'redux-thunk'
 
-import{ createStore, applyMiddleware } from 'redux'
+// import{ createStore, applyMiddleware } from 'redux'
 
-export default (initialState) => {
-  return createStore(rootReducer, initialState, applyMiddleware(thunk))
-}
+// export default (initialState) => {
+//   return createStore(rootReducer, initialState, applyMiddleware(thunk))
+// }
 
+import { createStore, applyMiddleware, compose } from 'redux'
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+
+export default (preloadedState) => 
+  createStore(rootReducer, preloadedState, composeEnhancers(
+    applyMiddleware(thunk)
+  ))

@@ -6,7 +6,6 @@ import StreamersContainer from './components/StreamersContainer'
 class App extends Component {
   constructor (props) {
     super(props)
-    this.state = {logo: "https://www.reactiongifs.com/r/mgc.gif"}
   }
 
   render() {
@@ -21,7 +20,6 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         */}
-        <img src={this.state.logo} alt='some pic' /> 
         <StreamersContainer />
       </div>
     )

@@ -3,9 +3,11 @@ import React from 'react'
 
 const divStyle = {backgroundColor: "grey",
                   // marginBottom: 0
-                  // height: 50
+                  height: 50,
+                  paddingTop: 20,
+                  paddingBottom: 10
 }
-const headerStyle = {margin: 0, height: 50}
+const headerStyle = {color: 'black', height: 50, margin: 0}
 
 const StreamersHeader = () => {
   return (

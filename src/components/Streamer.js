@@ -1,7 +1,11 @@
 import React, {PropTypes} from 'react'
 
 const Streamer = ({streamer, channel, stream}) => {
-
+// const Streamer = props => {
+// var streamer = props.streamer
+// var channel = props.channel
+// var stream = props.stream
+  
   console.log(channel)
   const getStatus = () => stream.stream ? channel.status : "Offline"  
   
@@ -13,7 +17,7 @@ const Streamer = ({streamer, channel, stream}) => {
   const divStyle = {
     display: 'flex',
     flexDirection: 'row',
-    backgroundColor: 'teal',
+    backgroundColor: status === 'Offline' ? 'teal' : 'green',
     border: 'thin solid white'
   }
   
@@ -22,14 +26,14 @@ const Streamer = ({streamer, channel, stream}) => {
                      width: 50,
                     }
   
-  const nameStyle = {fontWeight: 'bold',
-                     flex: '1 0 0'
+  // const nameStyle = {fontWeight: 'bold',
+  //                   flex: '1 0 0'
                      
-                    }
+  //                   }
 
-  const statusStyle = {fontWeight: 'bold',
-                       flex: '3 0 0'
-                      }
+  // const statusStyle = {fontWeight: 'bold',
+  //                     // flex: '3 0 0'
+  //                     }
 
   const logoDivStyle = {flex: '1 0 0', marginTop: 3}
   const nameDivStyle = {flex: '1 0 0', marginTop: 20}
@@ -37,7 +41,7 @@ const Streamer = ({streamer, channel, stream}) => {
   return (
     <div style={divStyle}>
       <div style={logoDivStyle}>
-        <img style={logoStyle} src={logo} />
+        <img style={logoStyle} src={logo} alt='logo'/>
       </div>
       <div style={nameDivStyle}>
         <a style={{height: 50, textDecoration: 'none', color: 'black'}}href={url}>{name}</a>
